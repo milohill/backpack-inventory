@@ -3,17 +3,14 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const BackpackSchema = new Schema({
+const ManufacturerSchema = new Schema({
   name: {
     type: String,
+    enum: ['Osprey', 'AER', 'COTOPAXI'],
     required: true,
   },
-  manufacturer: {
-    type: mongoose.Types.ObjectId,
-    required: true,
-  },
-  kind: {
-    type: mongoose.Types.ObjectId,
+  description: {
+    type: String,
     required: true,
   },
   year: {
@@ -26,14 +23,10 @@ const BackpackSchema = new Schema({
     },
     required: true,
   },
-  description: {
-    type: String,
-    required: true,
-  },
 });
 
-BackpackSchema.virtual('url').get(function () {
-  return `/catalog/backpack/${this._id}`;
+ManufacturerSchema.virtual('url').get(function () {
+  return `/catalog/manufacturer/${this._id}`;
 });
 
-module.exports = mongoose.model('Backpack', BackpackSchema);
+module.exports = mongoose.model('Manufacturer', ManufacturerSchema);

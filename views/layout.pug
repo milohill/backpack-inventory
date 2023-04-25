@@ -4,4 +4,17 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    .side-panel
+      ul
+        li
+          a(href='catalogue/kinds') Kinds
+        li
+          a(href='catalogue/manufacturers') Manufacturers
+        li
+          a(href='catalogue/backpacks') Backpacks
+        li
+          a(href='catalogue/backpackinstances') Backpack Instances
+      hr
+
+    .main-panel 
+      block content

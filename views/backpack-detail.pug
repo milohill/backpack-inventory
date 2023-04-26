@@ -1,0 +1,13 @@
+extends layout 
+
+block content 
+  h1= title
+  h3 #{theManufacturer.name} / #{theKind.name} / #{theBackpack.name} (#{theBackpack.year})
+  p= theBackpack.description
+
+  ul 
+    for backpackinstance in backpackinstanceList
+      li stock: #{backpackinstance.stock}, price: #{backpackinstance.price}
+
+  if error 
+    p= error

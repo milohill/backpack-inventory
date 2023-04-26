@@ -33,7 +33,7 @@ const BackpackSchema = new Schema({
 });
 
 BackpackSchema.virtual('url').get(function () {
-  return `/catalog/backpack/${this._id}`;
+  return `/catalogue/backpack/${this._id}`;
 });
 
 module.exports = mongoose.model('Backpack', BackpackSchema);

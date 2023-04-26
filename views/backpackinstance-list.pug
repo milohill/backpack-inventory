@@ -1,0 +1,11 @@
+extends layout 
+
+block content 
+  h1= title 
+  ul 
+    for backpackinstance in backpackinstanceList 
+      li
+        a(href=backpackinstance.url) #{backpack.name}
+
+  if error 
+    p= error

@@ -1,0 +1,11 @@
+extends layout 
+
+block content
+  h1= title
+  ul
+  for manufacturer in manufacturerList
+    li
+      a(href=manufacturer.url) #{manufacturer.name}
+  
+  if error 
+    p= error

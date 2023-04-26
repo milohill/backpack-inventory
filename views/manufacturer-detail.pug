@@ -1,0 +1,8 @@
+extends layout 
+
+block content 
+  h1= title 
+  h3 #{theManufacturer.name} (#{theManufacturer.year})
+  p= theManufacturer.description
+  if error
+    p= error

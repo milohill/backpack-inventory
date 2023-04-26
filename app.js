@@ -1,8 +1,10 @@
 let createError = require('http-errors');
 let express = require('express');
+const mongoose = require('mongoose');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+require('dotenv').config();
 
 const compression = require('compression');
 const helmet = require('helmet');
@@ -11,18 +13,27 @@ const RateLimit = require('express-rate-limit');
 
 const limiter = RateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
-  max: 20,
+  max: 1000,
 });
 
 const indexRouter = require('./routes/index');
 const catalogueRouter = require('./routes/catalogue');
 
 let app = express();
+const mongodbUrl = process.env.MONGODB_URL;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(limiter);
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      'script-src': ["'self'", 'code.jquery.com', 'cdn.jsdelivr.net'],
+    },
+  })
+);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -36,6 +47,14 @@ app.use('/catalogue', catalogueRouter);
 app.use(function (req, res, next) {
   next(createError(404));
 });
+
+main().catch((err) => {
+  console.log(err);
+});
+
+async function main() {
+  await mongoose.connect(mongodbUrl);
+}
 
 // error handler
 app.use(function (err, req, res, next) {

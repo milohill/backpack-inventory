@@ -5,16 +5,28 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     .side-panel
+      h1
+        a(href='/catalogue') Home
+      hr
+      h3 Read
       ul
         li
-          a(href='catalogue/kinds') Kinds
+          a(href='/catalogue/kinds') Kinds
         li
-          a(href='catalogue/manufacturers') Manufacturers
+          a(href='/catalogue/manufacturers') Manufacturers
         li
-          a(href='catalogue/backpacks') Backpacks
-        li
-          a(href='catalogue/backpackinstances') Backpack Instances
+          a(href='/catalogue/backpacks') Backpacks
       hr
+      h3 Create
+      ul
+        li
+          a(href='/catalogue/kind/create') Create a new kind
+        li
+          a(href='/catalogue/manufacturer/create') Create a new manufacturer
+        li
+          a(href='/catalogue/backpack/create') Create a new backpack
+        li
+          a(href='/catalogue/backpackinstance/create') Create a new backpack instance
 
     .main-panel 
       block content

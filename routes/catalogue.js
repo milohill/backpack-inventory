@@ -1,9 +1,9 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const asyncHanlder = require('express-async-handler');
-const Kind = require('../models/kind');
 
 const router = express.Router();
+const kindController = require('../controllers/kind-controller');
+const backpackController = require('../controllers/backpack-controller');
+const manufacturerController = require('../controllers/manufacturer-controller');
 
 router.get('/', (req, res, next) => {
   res.render('catalogue', {
@@ -11,24 +11,17 @@ router.get('/', (req, res, next) => {
   });
 });
 
-router.get(
-  '/kinds',
-  asyncHanlder(async (req, res, next) => {
-    const allKinds = await Kind.find().exec();
-    res.render('kind_list', {
-      title: 'Kinds List',
-      allKinds,
-    });
-  })
-);
+router.get('/kinds', kindController.list_kinds);
 
-router.get('/manufacturers', (req, res, next) => {
-  res.send('manus');
-});
+router.get('/kind/:id', kindController.detail_kind);
 
-router.get('/backpacks', (req, res, next) => {
-  res.send('backpacks');
-});
+router.get('/manufacturers', manufacturerController.list_manufacturers);
+
+router.get('/manufacturer/:id', manufacturerController.detail_manufacturer);
+
+router.get('/backpacks', backpackController.list_backpacks);
+
+router.get('/backpack/:id', backpackController.detail_backpack);
 
 router.get('/backpackinstances', (req, res, next) => {
   res.send('instances');

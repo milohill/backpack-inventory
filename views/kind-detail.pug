@@ -1,0 +1,12 @@
+extends layout 
+
+block content 
+  h1= title 
+  h3= theKind.name
+  ul
+    for backpack in theBackpacks
+      li
+        a(href=backpack.url) #{backpack.name}
+
+  if error
+    p= error

@@ -1,0 +1,11 @@
+extends layout 
+
+block content 
+  h1= title 
+  ul
+  for kind in kindList
+    li
+      a(href=kind.url) #{kind.name}
+
+  if error
+    p= error

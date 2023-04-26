@@ -15,7 +15,7 @@ const KindSchema = new Schema({
 });
 
 KindSchema.virtual('url').get(function () {
-  return `/catalog/kind/${this._id}`;
+  return `/catalogue/kind/${this._id}`;
 });
 
 module.exports = mongoose.model('Kind', KindSchema);

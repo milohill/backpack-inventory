@@ -6,8 +6,10 @@
     "start": "node ./bin/www",
     "devstart": "nodemon ./bin/www"
   },
+  "engines" : {
+    "node": ">=19.3.0"
+  },
   "dependencies": {
-    "async": "^3.2.4",
     "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
@@ -15,16 +17,15 @@
     "express": "~4.16.1",
     "express-async-handler": "^1.2.0",
     "express-rate-limit": "^6.7.0",
-    "express-validator": "^6.15.0",
+    "express-validator": "^7.0.1",
+    "file-system": "^2.2.2",
     "helmet": "^6.1.5",
     "http-errors": "~1.6.3",
-    "install": "^0.13.0",
-    "luxon": "^3.3.0",
-    "mongoose": "^6.9.0",
+    "mongoose": "^7.0.5",
     "morgan": "~1.9.1",
-    "npm": "^9.6.4",
-    "pug": "2.0.0-beta11",
-    "node": ">=19.3.0"
+    "multer": "^1.4.5-lts.1",
+    "node": "^20.1.0",
+    "pug": "2.0.0-beta11"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"

@@ -1,0 +1,33 @@
+extends layout 
+
+block content 
+  h1= title
+  form(method='post' action='' enctype="multipart/form-data")
+
+    label(for='backpack-image') Image
+    input#backpack-image(type='file' name='backpack-image')
+
+    label(for='backpack-name') Backpack's name 
+    input#backpack-name(type='text' name='backpack-name' placeholder='Type the name here' value=backpack ? backpack.name : '')
+
+    label(for='backpack-kind') Backpack's kind 
+    select#backpack-kind(name='backpack-kind')
+      option(value='' selected='selected') --Please choose an option--
+      for kind in allKinds 
+        option(value=kind._id selected=(backpack ? backpack.kind._id.toString() === kind._id.toString() ? true : false : false)) #{kind.name}
+
+    label(for='backpack-manufacturer') Backpack's manufacturer
+    select#backpack-manufacturer(name='backpack-manufacturer')
+      option(value='' selected='selected') --Please choose an option--
+      for manufacturer in allManufacturers 
+        option(value=manufacturer._id selected=(backpack ? backpack.manufacturer._id.toString() === manufacturer._id.toString() ? true : false : false)) #{manufacturer.name}
+    
+    label(for='backpack-year') When was it manufactured?
+    input#backpack-year(type='number' name='backpack-year' min='1900' max='2099' step= '1' value=backpack ? backpack.year : '')
+
+    label(for='backpack-desc') Backpack's description
+    textarea#backpack-desc(name="backpack-desc", cols="10", rows="10") #{backpack ? backpack.description : ''}
+    
+    button(type='submit') Submit
+  if error 
+    p= error

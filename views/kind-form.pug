@@ -1,0 +1,15 @@
+extends layout
+
+block content 
+  h1= title 
+  form(method='POST' action='' enctype="multipart/form-data")
+    label(for='kind-name') Kind's name
+    input#kind-name(type='text' name='kind-name' placeholder='Type the name here' value=kind ? kind.name : '')
+    
+    label(for='kind-desc') Description
+    textarea#kind-desc(name="kind-desc", cols="10", rows="10") #{kind ? kind.description : ''}
+    
+    button(type='submit') Submit
+
+  if error 
+    p= error

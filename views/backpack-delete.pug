@@ -1,0 +1,19 @@
+extends layout 
+
+block content
+  h1 #{title}
+  h3 #{backpack.name}
+  if backpackinstances.length > 0
+    p Delete the #{backpackinstances.length > 1 ? 'backpack instances' : 'backpack instance'} first 
+    ul 
+      for backpackinstance in backpackinstances 
+        li stock: #{backpackinstance.stock} price: #{backpackinstance.price}
+          form(method='POST' action=backpackinstance.url + '/delete')
+            button(type='submit') Delete
+
+  else
+    form(method='POST' action='')
+      button(type='submit') You sure?
+
+  if error 
+    p #{error}

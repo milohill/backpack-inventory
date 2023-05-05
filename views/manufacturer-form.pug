@@ -1,0 +1,18 @@
+extends layout 
+
+block content
+  h1= title
+  form(method='POST' action='')
+    label(for='manufacturer-name') Manufacturer's name
+    input#manufacturer-name(type='text' name='manufacturer-name' placeholder='Type a name here' value=manufacturer ? manufacturer.name : '')
+
+    label(for='manufacturer-desc') Manufacturer's description
+    textarea#manufacturer-desc(name="manufacturer-desc", cols="10", rows="10") #{manufacturer ? manufacturer.description : ''}
+
+    label(for='manufacturer-year') when was it founded?
+    input#manufacturer-year(type='number' name='manufacturer-year' min='1900' max='2099' step= '1' value=manufacturer ? manufacturer.year : '')
+    
+    button(type='submit') Submit
+
+  if error
+    p= error

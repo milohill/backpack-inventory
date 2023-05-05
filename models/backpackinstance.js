@@ -7,25 +7,14 @@ const BackpackInstanceSchema = new Schema({
   backpack: {
     type: mongoose.Types.ObjectId,
     required: true,
+    ref: 'Backpack',
   },
   stock: {
     type: Number,
-    validate: {
-      validator: function (v) {
-        return v > 0;
-      },
-      message: 'The stock should be above 0',
-    },
     required: true,
   },
   price: {
     type: Number,
-    validate: {
-      validator: function (v) {
-        return v >= 50;
-      },
-      message: 'The minimum price for bags is 50 CAD',
-    },
     required: true,
   },
 });

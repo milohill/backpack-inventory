@@ -6,7 +6,6 @@ const { Schema } = mongoose;
 const ManufacturerSchema = new Schema({
   name: {
     type: String,
-    enum: ['Osprey', 'AER', 'COTOPAXI'],
     required: true,
   },
   description: {

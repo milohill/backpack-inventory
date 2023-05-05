@@ -1,0 +1,18 @@
+extends layout 
+
+block content 
+  h1 #{title}
+  h3 #{manufacturer.name}
+  if backpacks.length > 0
+    p Delete the #{backpacks.length > 1 ? 'backpacks' : 'backpack'} first
+    ul 
+    for backpack in backpacks 
+      li
+        a(href=backpack.url) #{backpack.name}
+
+  else 
+    form(method='POST' action='')
+      button(type='submit') You sure?
+
+  if error 
+    p #{error}

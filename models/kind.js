@@ -6,7 +6,6 @@ const { Schema } = mongoose;
 const KindSchema = new Schema({
   name: {
     type: String,
-    enum: ['Hiking Bags', 'Messenger Bags', 'Shoulder Bags'],
     required: true,
   },
   description: {

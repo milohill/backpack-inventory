@@ -8,5 +8,10 @@ block content
       li
         a(href=backpack.url) #{backpack.name}
 
+  li 
+    a(href=theKind.url + '/update') Update
+  li 
+    a(href=theKind.url + '/delete') Delete
+
   if error
     p= error

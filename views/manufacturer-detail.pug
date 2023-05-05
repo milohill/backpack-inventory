@@ -4,5 +4,11 @@ block content
   h1= title 
   h3 #{theManufacturer.name} (#{theManufacturer.year})
   p= theManufacturer.description
+
+  li 
+    a(href=theManufacturer.url + '/update') Update
+  li 
+    a(href=theManufacturer.url + '/delete') Delete
+  
   if error
     p= error

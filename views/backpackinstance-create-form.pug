@@ -1,0 +1,22 @@
+extends layout 
+
+block content 
+  h1= title
+  
+  form(method='POST' action='')
+    label(for='backpackinstance-name') Backpack's name
+    select#backpackinstance-name(name='backpackinstance-name')
+      option(value='' selected=true) --Please choose an option--
+      for backpack in allBackpacks
+        option(value=backpack._id selected=(backpackinstance ? backpackinstance.backpack._id.toString() === backpack._id.toString() ? true : false : false)) #{backpack.name}
+
+    label(for='backpackinstance-stock') How many stocks are left?
+    input#backpackinstance-stock(type='number' name='backpackinstance-stock' step='1' value=backpackinstance ? backpackinstance.stock : 0)
+
+    label(for='backpackinstance-price') How much is it for the unit price
+    input#backpackinstance-price(type='number' name='backpackinstance-price' step='1' value=backpackinstance ? backpackinstance.price : 0)
+
+    button(type='submit') Submit
+  
+  if error 
+    p= error

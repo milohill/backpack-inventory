@@ -1,6 +1,7 @@
 extends layout 
 
 block content 
+  img(src=`data:image/jpeg;base64,${theBackpack.image.toString('base64')}`)
   h1= title
   h3 #{theManufacturer.name} / #{theKind.name} / #{theBackpack.name} (#{theBackpack.year})
   p= theBackpack.description
@@ -8,6 +9,11 @@ block content
   ul 
     for backpackinstance in backpackinstanceList
       li stock: #{backpackinstance.stock}, price: #{backpackinstance.price}
+  
+  li 
+    a(href=theBackpack.url + '/update') Update
+  li 
+    a(href=theBackpack.url + '/delete') Delete
 
   if error 
     p= error

@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+const compression = require('compression');
 require('dotenv').config();
 
 const compression = require('compression');
@@ -26,6 +27,7 @@ const mongodbUrl = process.env.MONGODB_URL;
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(compression());
 app.use(limiter);
 app.use(
   helmet.contentSecurityPolicy({

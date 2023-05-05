@@ -4,11 +4,11 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const BackpackSchema = new Schema({
-  image: Buffer,
   name: {
     type: String,
     required: true,
   },
+  image: { type: Buffer },
   manufacturer: {
     type: mongoose.Types.ObjectId,
     required: true,

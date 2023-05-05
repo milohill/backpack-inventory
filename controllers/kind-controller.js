@@ -23,7 +23,6 @@ exports.detail_kind = asyncHandler(async (req, res, next) => {
   try {
     const theKind = await Kind.findById(req.params.id).exec();
     const theBackpacks = await Backpack.find({ kind: req.params.id }).exec();
-    console.log(theKind);
     res.render('kind-detail', {
       title: 'Kind Detail',
       theKind,

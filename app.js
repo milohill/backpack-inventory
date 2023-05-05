@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
-const compression = require('compression');
 require('dotenv').config();
 
 const compression = require('compression');

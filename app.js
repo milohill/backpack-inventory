@@ -20,7 +20,7 @@ const indexRouter = require('./routes/index');
 const catalogueRouter = require('./routes/catalogue');
 
 let app = express();
-const mongodbUrl = process.env.MONGODB_URL;
+const mongodbUrl = process.env.MONGODB_URL || '';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

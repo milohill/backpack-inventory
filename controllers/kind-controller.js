@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 const Kind = require('../models/kind');
+const Backpack = require('../models/backpack');
 
 exports.list_kinds = asyncHandler(async (req, res, next) => {
   try {

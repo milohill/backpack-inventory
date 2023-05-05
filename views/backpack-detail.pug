@@ -1,7 +1,8 @@
 extends layout 
 
-block content 
-  img(src=`data:image/jpeg;base64,${theBackpack.image.toString('base64')}`)
+block content
+  if theBackpack.image
+    img(src=`data:image/jpeg;base64,${theBackpack.image.toString('base64')}`)
   h1= title
   h3 #{theManufacturer.name} / #{theKind.name} / #{theBackpack.name} (#{theBackpack.year})
   p= theBackpack.description

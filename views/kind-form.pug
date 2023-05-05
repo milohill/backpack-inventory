@@ -2,7 +2,7 @@ extends layout
 
 block content 
   h1= title 
-  form(method='POST' action='' enctype="multipart/form-data")
+  form(method='POST' action='')
     label(for='kind-name') Kind's name
     input#kind-name(type='text' name='kind-name' placeholder='Type the name here' value=kind ? kind.name : '')
     
